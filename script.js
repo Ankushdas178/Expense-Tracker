@@ -77,11 +77,14 @@ const balance = document.getElementById(
       `;
     list.appendChild(item);
   }
+
+  
+
   
   //4
   
   //Update the balance income and expence
- function updateValues() {
+  function updateValues() {
     // Get the selected currency from the dropdown menu
     const selectedCurrency = document.getElementById('currencySelector').value;
   
@@ -131,6 +134,8 @@ const balance = document.getElementById(
         return '$'; // Default to dollar if the currency is not recognized
     }
   }
+  
+  
   
   
   //6 
