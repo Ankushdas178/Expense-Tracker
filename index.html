@@ -12,6 +12,23 @@
   <body>
     <h2>Expense Tracker</h2>
     <div class="container">
+       <!-- Currency Selector -->
+    <label for="currencySelector">Select Currency:</label>
+  <select id="currencySelector" onchange="updateValues()">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+    <option value="JPY">JPY</option>
+    <option value="AUD">AUD</option>
+    <option value="CAD">CAD</option>
+    <option value="CHF">CHF</option>
+    <option value="CNY">CNY</option>
+    <option value="SEK">SEK</option>
+    <option value="NZD">NZD</option>
+    <option value="INR">INR</option>
+
+    <!-- Add more currency options as needed -->
+  </select>
       <h4>Your Balance</h4>
       <h1 id="balance">$0.00</h1>
       <div class="inc-exp-container">
