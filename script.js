@@ -81,26 +81,55 @@ const balance = document.getElementById(
   //4
   
   //Update the balance income and expence
-  function updateValues() {
-    const amounts = transactions.map(
-      (transaction) => transaction.amount
-    );
-    const total = amounts
-      .reduce((acc, item) => (acc += item), 0)
-      .toFixed(2);
-    const income = amounts
-      .filter((item) => item > 0)
-      .reduce((acc, item) => (acc += item), 0)
-      .toFixed(2);
-    const expense =
-      (amounts
-        .filter((item) => item < 0)
-        .reduce((acc, item) => (acc += item), 0) *
-      -1).toFixed(2);
+ function updateValues() {
+    // Get the selected currency from the dropdown menu
+    const selectedCurrency = document.getElementById('currencySelector').value;
   
-      balance.innerText=`$${total}`;
-      money_plus.innerText = `$${income}`;
-      money_minus.innerText = `$${expense}`;
+    // Map the amounts to the selected currency symbol
+    const currencySymbol = getCurrencySymbol(selectedCurrency);
+    const amounts = transactions.map((transaction) => transaction.amount);
+  
+    // Calculate total, income, and expense in the selected currency
+    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+    const income = amounts.filter((item) => item > 0).reduce((acc, item) => (acc += item), 0).toFixed(2);
+    const expense = (amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) * -1).toFixed(2);
+  
+    // Update the HTML elements with the new currency symbol
+    balance.innerText = `${currencySymbol}${total}`;
+    money_plus.innerText = `${currencySymbol}${income}`;
+    money_minus.innerText = `${currencySymbol}${expense}`;
+  }
+  
+  // Function to get the currency symbol based on user selection
+  function getCurrencySymbol(currency) {
+    // Add cases for different currencies as needed
+    switch (currency) {
+      case 'USD':
+          return '$';
+        case 'EUR':
+          return '€';
+        case 'GBP':
+          return '£';
+        case 'JPY':
+          return '¥';
+        case 'AUD':
+          return 'A$';
+        case 'CAD':
+          return 'CA$';
+        case 'CHF':
+          return 'CHF';
+        case 'CNY':
+          return '¥';
+        case 'SEK':
+          return 'kr';
+        case 'NZD':
+          return 'NZ$';
+        case 'INR':
+          return '₹';
+      // Add more cases as needed
+      default:
+        return '$'; // Default to dollar if the currency is not recognized
+    }
   }
   
   
